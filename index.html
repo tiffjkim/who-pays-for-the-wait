@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who pays for the wait — Capital stack and timeline</title>
+<meta name="description" content="How a delay lands in market-rate and affordable housing deals: the capital stack, the clock, who pays, and what $10M would buy.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#FAFAF8;--bg2:#F0EFEB;--bg3:#E8E6E1;--text:#1A1A18;--text2:#6B6A65;--text3:#9C9B95;--border:#D4D3CD;--border2:#E8E6E1;--blue:#2563EB;--blue-bg:#EFF6FF;--blue-text:#1E40AF;--green:#059669;--green-bg:#ECFDF5;--green-text:#065F46;--amber:#D97706;--amber-bg:#FFFBEB;--amber-text:#92400E;--red:#DC2626;--red-bg:#FEF2F2;--red-text:#991B1B;--font:'DM Sans',system-ui,sans-serif;--mono:'DM Mono',ui-monospace,monospace;--r:10px;--rl:14px}
+@media(prefers-color-scheme:dark){:root{--bg:#141413;--bg2:#1E1E1C;--bg3:#282826;--text:#E8E6E1;--text2:#9C9B95;--text3:#6B6A65;--border:#3A3A37;--border2:#2A2A28;--blue:#60A5FA;--blue-bg:#1E293B;--blue-text:#93C5FD;--green:#34D399;--green-bg:#064E3B;--green-text:#6EE7B7;--amber:#FBBF24;--amber-bg:#451A03;--amber-text:#FCD34D;--red:#F87171;--red-bg:#450A0A;--red-text:#FCA5A5}}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.c{max-width:860px;margin:0 auto;padding:2rem 1.5rem 4rem}
+@media(max-width:600px){.c{padding:1.25rem 1rem 3rem}}
+.hdr{margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)}
+.hdr h1{font-size:1.6rem;font-weight:600;letter-spacing:-.02em;margin-bottom:.2rem}
+.hdr p{font-size:.88rem;color:var(--text2)}
+.badge{display:inline-block;font-size:.65rem;font-weight:500;padding:2px 9px;border-radius:16px;vertical-align:middle}
+.hdr .badge{margin-top:.5rem}
+.b-g{background:var(--green-bg);color:var(--green-text)}.b-a{background:var(--amber-bg);color:var(--amber-text)}.b-b{background:var(--blue-bg);color:var(--blue-text)}.b-r{background:var(--red-bg);color:var(--red-text)}
+h2{font-size:1.15rem;font-weight:600;margin:2.25rem 0 .4rem;padding-top:1.5rem;border-top:1px solid var(--border2);letter-spacing:-.01em}
+h2:first-of-type{border:none;padding:0;margin-top:0}
+h3{font-size:.9rem;font-weight:500;margin:1rem 0 .35rem}
+p{font-size:.84rem;color:var(--text2);margin:3px 0}
+.lead{font-size:.95rem;color:var(--text);margin:.2rem 0 .8rem;max-width:62ch}
+.ms{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
+.m{background:var(--bg2);border-radius:var(--r);padding:10px 12px;flex:1;min-width:150px;border-left:3px solid var(--border)}
+.m.bl{border-left-color:var(--blue)}.m.gn{border-left-color:var(--green)}.m.am{border-left-color:var(--amber)}.m.rd{border-left-color:var(--red)}
+.m .ml{font-size:.63rem;color:var(--text2);margin-bottom:2px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.m .mv{font-family:var(--mono);font-size:1.2rem;font-weight:500;color:var(--text);text-align:right}
+.m .mn{font-size:.68rem;color:var(--text3);margin-top:1px;text-align:right}
+.cd{background:var(--bg2);border-radius:var(--rl);padding:.85rem 1rem;margin:8px 0;font-size:.84rem;line-height:1.55}
+.cd.bd{border-left:3px solid var(--border)}.cd.bl{border-left:3px solid var(--blue);background:var(--blue-bg)}.cd.gn{border-left:3px solid var(--green);background:var(--green-bg)}.cd.am{border-left:3px solid var(--amber);background:var(--amber-bg)}.cd.rd{border-left:3px solid var(--red);background:var(--red-bg)}
+.cd p{margin:0;color:var(--text)}.cd strong{font-weight:600}
+.verdicts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:1rem 0}
+@media(max-width:700px){.verdicts{grid-template-columns:1fr}}
+.verdict{border-radius:var(--rl);padding:1rem;border-left:4px solid var(--green);background:var(--green-bg)}
+.verdict.am{border-left-color:var(--amber);background:var(--amber-bg)}.verdict.bl{border-left-color:var(--blue);background:var(--blue-bg)}
+.verdict .vt{font-size:.63rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.35rem;color:var(--green-text)}
+.verdict.am .vt{color:var(--amber-text)}.verdict.bl .vt{color:var(--blue-text)}
+.verdict p{color:var(--text);font-size:.82rem;margin:0}
+/* stacks */
+.stacks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0}
+@media(max-width:700px){.stacks{grid-template-columns:1fr}}
+.stk h3{margin-top:0}
+.stk .col{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:var(--rl);overflow:hidden}
+.seg{padding:8px 11px;font-size:.76rem;display:flex;justify-content:space-between;gap:8px;align-items:center;border-bottom:1px solid var(--bg)}
+.seg:last-child{border-bottom:none}
+.seg b{font-weight:600}
+.seg .st{font-family:var(--mono);font-size:.62rem;white-space:nowrap}
+.seg.k{background:var(--green-bg);color:var(--green-text)}
+.seg.w{background:repeating-linear-gradient(135deg,var(--amber-bg) 0 8px,transparent 8px 16px);color:var(--amber-text);border-left:4px solid var(--amber)}
+.key{display:flex;gap:14px;flex-wrap:wrap;font-size:.7rem;color:var(--text2);margin:6px 0}
+.key i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:5px}
+/* chart */
+.chart{background:var(--bg2);border-radius:var(--rl);padding:12px;margin:10px 0}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{font-family:var(--font);fill:var(--text2);font-size:11px}
+.chart .t1{fill:var(--text);font-weight:600;font-size:12px}
+.chart .mono{font-family:var(--mono)}
+/* payers */
+.chain{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.chain{grid-template-columns:1fr}}
+.pay{width:100%;text-align:left;font:inherit;color:inherit;background:var(--bg2);border:1px solid var(--border2);border-left:4px solid var(--blue);border-radius:var(--r);padding:10px 12px;margin:0 0 6px;cursor:pointer;display:block}
+.pay:hover{border-color:var(--blue)}
+.pay .pn{font-size:.62rem;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.pay b{display:block;font-size:.9rem;font-weight:600}
+.pay .pm{font-size:.76rem;color:var(--text2);display:block;margin-top:1px}
+.pay .more{display:none;margin-top:7px;padding-top:7px;border-top:1px dashed var(--border);font-size:.76rem;color:var(--text)}
+.pay[aria-expanded="true"] .more{display:block}
+.pay.ok{border-left-color:var(--green)}
+.pay.wall{border-left-color:var(--red);background:repeating-linear-gradient(135deg,var(--red-bg) 0 10px,var(--bg2) 10px 20px)}
+.arr{text-align:center;font-size:.68rem;color:var(--text3);margin:-1px 0 5px}
+/* controls */
+.ctrl{display:flex;align-items:center;gap:10px;margin:7px 0;flex-wrap:wrap}
+.cl{font-size:.78rem;color:var(--text2);min-width:200px;font-weight:500}
+.cv{font-family:var(--mono);font-size:.8rem;font-weight:500;min-width:70px;text-align:right;color:var(--text)}
+input[type=range]{flex:1;min-width:100px;height:5px;-webkit-appearance:none;appearance:none;background:var(--bg3);border-radius:3px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--text);cursor:pointer;border:3px solid var(--bg)}
+input[type=range]::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--text);cursor:pointer;border:3px solid var(--bg)}
+ol.q{list-style:none;counter-reset:q;margin:8px 0}
+ol.q li{counter-increment:q;background:var(--bg2);border-radius:var(--r);padding:10px 12px 10px 42px;margin:0 0 6px;font-size:.88rem;color:var(--text);position:relative}
+ol.q li::before{content:counter(q);position:absolute;left:12px;top:9px;width:20px;height:20px;border-radius:50%;background:var(--text);color:var(--bg);font-family:var(--mono);font-size:.7rem;display:flex;align-items:center;justify-content:center}
+.src{font-size:.74rem;color:var(--text2);padding-left:1.1rem}.src li{margin:0 0 5px}
+a{color:var(--blue)}
+.ft{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--border2);font-size:.68rem;color:var(--text3);line-height:1.7}
+@media print{body{background:#fff;color:#000}.c{max-width:100%;padding:0}input[type=range]{display:none}.verdict,.m,.cd,.chart,.stk{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="c">
+
+<div class="hdr">
+<h1>Who pays for the wait</h1>
+<p>Capital stack and timeline · market-rate vs. affordable housing</p>
+<span class="badge b-a">Working draft · public sources only</span>
+</div>
+
+<h2>1. How many answers are you waiting for?</h2>
+<p class="lead">Every deal needs its capital sources to say yes. Market-rate usually has the answers before it commits. Affordable gets them one funding round at a time.</p>
+
+<div class="stacks">
+<div class="stk"><h3>Market-rate capital stack</h3>
+<div class="col">
+<div class="seg k"><span><b>Equity partners</b></span><span class="st">KNOWN AT CLOSE</span></div>
+<div class="seg k"><span><b>Senior construction loan</b></span><span class="st">KNOWN AT CLOSE</span></div>
+</div></div>
+<div class="stk"><h3>Affordable capital stack</h3>
+<div class="col">
+<div class="seg w"><span><b>Federal tax credit equity</b></span><span class="st">AWAITING AWARD</span></div>
+<div class="seg w"><span><b>State soft debt and state credits</b></span><span class="st">AWAITING AWARD</span></div>
+<div class="seg w"><span><b>Local funds</b></span><span class="st">AWAITING AWARD</span></div>
+<div class="seg w"><span><b>Rental vouchers</b></span><span class="st">AWAITING AWARD</span></div>
+<div class="seg k"><span><b>Permanent loan</b></span><span class="st">AFTER THE REST</span></div>
+</div></div>
+</div>
+<div class="key"><span><i style="background:var(--green-bg);border:1px solid var(--green)"></i>Answer in hand</span><span><i style="background:repeating-linear-gradient(135deg,var(--amber-bg) 0 4px,transparent 4px 8px);border:1px solid var(--amber)"></i>Answer pending, on someone else's calendar</span></div>
+<div class="ms">
+<div class="m am"><div class="ml">Sources in one affordable deal</div><div class="mv">up to 10+</div><div class="mn">federal, state, local, private</div></div>
+<div class="m am"><div class="ml">Cost added per extra source</div><div class="mv">~1.7%</div><div class="mn">per unit, Terner Center</div></div>
+<div class="m bl"><div class="ml">Capitalized interest</div><div class="mv">~4%</div><div class="mn">of total cost, state average</div></div>
+</div>
+<p style="font-size:.7rem;color:var(--text3)">Stack illustrative. Source counts and cost figures: Massachusetts Home for Everyone construction finance explainer.</p>
+
+<h2>2. The clock: when does the shovel go in?</h2>
+<p class="lead">Dollars sit in the ground while the deal waits. The shaded blocks are capital waiting; the ghost bars show how far the start date can move.</p>
+
+<div class="chart">
+<svg viewBox="0 0 780 440" role="img" aria-label="Capital in the ground per unit over time. Market-rate shovel at about month 16, up to month 28 if credit is tight. Affordable shovel at about month 33, 42 or 51 depending on whether it wins in the first, second or third funding round.">
+<!-- market panel baseline y=170 -->
+<text class="t1" x="0" y="14">MARKET-RATE · answers in hand at closing</text>
+<line x1="0" y1="170" x2="720" y2="170" stroke="var(--text)" stroke-width="1.5"/>
+<!-- ghost ramp tight credit: shovel 28 -->
+<rect x="0" y="160" width="160" height="10" fill="var(--blue)"/>
+<polygon points="160,170 160,160 400,60 400,170" fill="var(--amber)"/>
+<rect x="400" y="60" width="120" height="110" fill="var(--green)" opacity=".75"/>
+<polygon points="280,170 280,160 520,60 520,170" fill="var(--amber)" opacity=".28" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="280" y1="30" x2="280" y2="170" stroke="var(--text2)" stroke-dasharray="2 4"/>
+<text x="286" y="30">tight credit: ~month 28</text>
+<line x1="160" y1="30" x2="160" y2="170" stroke="var(--text2)" stroke-dasharray="5 4"/>
+<text x="166" y="42">Shovel ~month 16</text>
+<text x="404" y="52" class="mono">lease-up</text>
+<text x="4" y="150">land capital waits</text>
+<!-- affordable panel baseline y=400 -->
+<text class="t1" x="0" y="214">AFFORDABLE · answers arrive one round at a time</text>
+<line x1="0" y1="400" x2="720" y2="400" stroke="var(--text)" stroke-width="1.5"/>
+<polygon points="510,400 510,368 750,268 750,400" fill="var(--amber)" opacity=".12" stroke="var(--amber)" stroke-dasharray="4 3"/>
+<polygon points="420,400 420,368 660,268 660,400" fill="var(--amber)" opacity=".2" stroke="var(--amber)" stroke-dasharray="4 3"/>
+<rect x="0" y="368" width="420" height="32" fill="var(--blue)"/>
+<polygon points="330,400 330,368 570,268 570,400" fill="var(--amber)"/>
+<rect x="0" y="368" width="330" height="32" fill="var(--blue)"/>
+<line x1="330" y1="226" x2="330" y2="400" stroke="var(--text2)" stroke-dasharray="5 4"/>
+<line x1="420" y1="226" x2="420" y2="400" stroke="var(--text2)" stroke-dasharray="2 4"/>
+<line x1="510" y1="226" x2="510" y2="400" stroke="var(--text2)" stroke-dasharray="2 4"/>
+<text x="334" y="238" class="t1">Round 1: ~month 33</text>
+<text x="424" y="252">Round 2: ~42</text>
+<text x="514" y="266">Round 3: ~51</text>
+<text x="8" y="392" style="fill:#fff" class="t1">land and predevelopment capital waits, and keeps growing</text>
+<!-- uncertainty brackets -->
+<rect x="330" y="410" width="180" height="8" rx="3" fill="var(--amber)" opacity=".6"/>
+<text x="330" y="434" class="t1">Start date can land anywhere in this range</text>
+<rect x="160" y="180" width="120" height="8" rx="3" fill="var(--green)" opacity=".6"/>
+<text x="286" y="187">narrow range: months 16 to 28</text>
+<!-- axis -->
+<g class="mono" style="font-size:10px">
+<text x="0" y="418">Yr 0</text>
+</g>
+</svg>
+</div>
+<div class="key"><span><i style="background:var(--blue)"></i>Capital waiting</span><span><i style="background:var(--amber)"></i>Construction (capital in the ground)</span><span><i style="background:var(--green)"></i>Lease-up</span><span>Scale: 10 px ≈ 1 month</span></div>
+<div class="ms">
+<div class="m bl"><div class="ml">One funding round</div><div class="mv">~9 mo</div><div class="mn">notice to award</div></div>
+<div class="m am"><div class="ml">Rounds typically needed</div><div class="mv">2+</div><div class="mn">9% credits, Massachusetts</div></div>
+<div class="m bl"><div class="ml">Boston large-project review</div><div class="mv">10 mo</div><div class="mn">median; tail of 3–4 yrs</div></div>
+</div>
+<div class="cd am"><p><strong>Illustrative, not measured.</strong> Months come from the sources below. The shapes are per-unit and schematic. The rounds are the story: each missed round moves the shovel about nine months, and the capital already in the ground keeps waiting.</p></div>
+
+<h2>3. Is the affordable wait really longer?</h2>
+<p class="lead">Not necessarily on average. That is the interesting part.</p>
+<div class="verdicts">
+<div class="verdict"><div class="vt">What the research says</div><p>The Atlanta Fed finds little difference in development time between publicly and privately funded multifamily projects. Planning and permitting run 3–4 months longer than construction.</p></div>
+<div class="verdict am"><div class="vt">What it can't tell us</div><p>An average hides the spread. The summary I could read does not say how much individual projects vary, or what happens to the project that misses a round.</p></div>
+<div class="verdict bl"><div class="vt">Our hypothesis</div><p>The gap isn't the average wait. It's whether you know the answer before you commit. A date you can't predict is a cost nobody put in the pro forma.</p></div>
+</div>
+<p style="font-size:.7rem;color:var(--text3)">The hypothesis is ours and not a finding of the paper. Also reported: durations are longer in the Northeast and West, and in mixed-use and conversion projects.</p>
+
+<h2>4. Who pays for the wait</h2>
+<p class="lead">The cost moves down the chain until someone can pass it on. Tap a card to see why, and what to ask.</p>
+<div class="chain">
+<div>
+<h3>Market-rate</h3>
+<button class="pay" aria-expanded="false"><span class="pn">1 · first to carry it</span><b>Seller or land holder</b><span class="pm">Holds the site longer, or sells at a discount.</span><span class="more"><span class="badge b-a">Reasoning</span> Option and extension fees pay part of it. Ask: who held your last site while approvals ran?</span></button>
+<div class="arr">↓ if it can't absorb it</div>
+<button class="pay" aria-expanded="false"><span class="pn">2</span><b>Lender</b><span class="pm">Interest reserve, extension fees, tighter terms.</span><span class="more"><span class="badge b-a">Reasoning</span> In tight credit the loan itself is the wait. Ask: when did a lender last decline to extend?</span></button>
+<div class="arr">↓</div>
+<button class="pay" aria-expanded="false"><span class="pn">3</span><b>Equity partners</b><span class="pm">Returns erode; the deal stalls below their hurdle.</span><span class="more"><span class="badge b-a">Reasoning</span> Ask: at what return does equity walk from a delayed deal?</span></button>
+<div class="arr">↓</div>
+<button class="pay ok" aria-expanded="false"><span class="pn">4 · last to carry it</span><b>Renters</b><span class="pm">Priced into asking rents, if the market allows.</span><span class="more"><span class="badge b-a">Reasoning</span> Ask: how often does a delay actually get passed through?</span></button>
+</div>
+<div>
+<h3>Affordable</h3>
+<button class="pay" aria-expanded="false"><span class="pn">1 · first to carry it</span><b>Public funders</b><span class="pm">Added subsidy, or a longer queue.</span><span class="more"><span class="badge b-g">Sourced</span> Delay and cost growth must be covered by added subsidy or donations, or the project cannot proceed. Ask: does government see the carrying cost of its own queue?</span></button>
+<div class="arr">↓ if it can't absorb it</div>
+<button class="pay" aria-expanded="false"><span class="pn">2</span><b>Tax credit investors</b><span class="pm">Credits and returns arrive later.</span><span class="more"><span class="badge b-a">Reasoning</span> Who ultimately bears this is not stated in the sources I read. Ask: how do investors price delay today?</span></button>
+<div class="arr">↓</div>
+<button class="pay" aria-expanded="false"><span class="pn">3</span><b>Sponsor or nonprofit</b><span class="pm">Fee and donations absorb what subsidy does not.</span><span class="more"><span class="badge b-g">Sourced</span> Ask: how much fee gets deferred or given up on a typical delayed deal?</span></button>
+<div class="arr">↓</div>
+<button class="pay" aria-expanded="false"><span class="pn">4</span><b>Lenders</b><span class="pm">Often not carrying it: they lend once the stack is funded.</span><span class="more"><span class="badge b-a">Reasoning</span> Ask: when does a construction lender step in?</span></button>
+<div class="arr">↓</div>
+<button class="pay wall" aria-expanded="false"><span class="pn">The wall</span><b>Renters</b><span class="pm">Rents are capped, so delay cannot be passed through.</span><span class="more"><span class="badge b-g">Sourced</span> Maximum rents are set by federal rules tied to area median income. Ask: what would change if the cap could flex?</span></button>
+</div>
+</div>
+<div class="cd rd"><p><strong>Hypothesis: where the cost goes when the wall holds.</strong> Back to the public line. A deal stalls when its last absorber is spent: market-rate when returns fall below what equity will accept, affordable when the subsidy line cannot grow. In a tight market, market-rate deals lose their cushion and start looking for public money too.</p></div>
+
+<h2>5. If you had $10 million</h2>
+<p class="lead">Money can do three things about a wait: close the gap, make waiting cheaper, or make it shorter. Move the sliders. Defaults are placeholders.</p>
+<div class="ctrl"><span class="cl">Public subsidy needed per unit</span><input type="range" min="50000" max="400000" step="10000" value="200000" id="gap"><span class="cv" id="v-gap"></span></div>
+<div class="ctrl"><span class="cl">Total development cost per unit</span><input type="range" min="300000" max="900000" step="10000" value="650000" id="tdc"><span class="cv" id="v-tdc"></span></div>
+<div class="ctrl"><span class="cl">Units per project</span><input type="range" min="20" max="200" step="5" value="80" id="units"><span class="cv" id="v-units"></span></div>
+<div class="ctrl"><span class="cl">Cost of a year of delay (% of cost)</span><input type="range" min="1" max="12" step="0.5" value="6" id="d"><span class="cv" id="v-d"></span></div>
+<div class="ctrl"><span class="cl">Interest saved by a cheap fund</span><input type="range" min="1" max="8" step="0.5" value="4" id="r"><span class="cv" id="v-r"></span></div>
+<div class="ctrl"><span class="cl">Cost of one project's handoff owner</span><input type="range" min="100000" max="1000000" step="50000" value="400000" id="hc"><span class="cv" id="v-hc"></span></div>
+<div class="ctrl"><span class="cl">Months saved per project</span><input type="range" min="0" max="18" step="0.5" value="6" id="m"><span class="cv" id="v-m"></span></div>
+<div class="ms">
+<div class="m gn"><div class="ml">A · Close the gap</div><div class="mv" id="oA"></div><div class="mn" id="oA2"></div></div>
+<div class="m bl"><div class="ml">B · Make waiting cheaper</div><div class="mv" id="oB"></div><div class="mn" id="oB2"></div></div>
+<div class="m am"><div class="ml">C · Make the wait shorter</div><div class="mv" id="oC"></div><div class="mn" id="oC2"></div></div>
+</div>
+<div class="cd gn"><p id="be"></p></div>
+<div class="cd am"><p><strong>Read with care.</strong> Delay cost avoided is not the same as units delivered; it becomes units only if projects then need less subsidy. "Months saved" is the number that matters, and nothing here measures it. This is arithmetic for the argument, not a forecast.</p></div>
+
+<h2>Questions for the room</h2>
+<ol class="q">
+<li>Think of the last deal you saw stall. Who paid for the wait, and was it on anyone's pro forma?</li>
+<li>What was that deal's last absorber: returns, subsidy, sponsor fee, or nobody?</li>
+<li>Who is paid to own the handoff between approval and funding? What would one be worth?</li>
+<li>Which of the three uses of $10M would you pick, and what evidence would change your mind?</li>
+</ol>
+
+<h2>Sources</h2>
+<ol class="src">
+<li><a href="https://www.mass.gov/info-details/home-for-everyone-construction-finance-explainer">Massachusetts, Home for Everyone construction finance explainer</a>: two or more cycles for 9% credits; each added source about 1.7% per unit; capitalized interest about 4% of cost; delays covered by added subsidy or donations; state-funded new construction above $650,000 per unit in 2024.</li>
+<li><a href="https://www.mass.gov/doc/phn-2025-14-nofa-winter-rental-round-2026/download">Massachusetts winter 2026 rental round notice</a>: notice, pre-application, full application and estimated award timing (about nine months).</li>
+<li><a href="https://perspectives.goulstonstorrs.com/insights/article/timeline-considerations-for-boston-s-new-re-review-process">Goulston &amp; Storrs, Boston large project review timeline</a>: median 10 months over a decade; tail of three to four years.</li>
+<li><a href="https://www.atlantafed.org/research-and-data/publications/policy-hub-papers/2024/06/18/04-how-long-does-it-take-to-build-multifamily-housing">Federal Reserve Bank of Atlanta, How long does it take to build multifamily housing?</a>: planning runs 3–4 months longer than construction; little difference between public and private funding.</li>
+<li><a href="https://www.huduser.gov/publications/pdf/what_happens_lihtc_v2.pdf">HUD, What Happens to Low-Income Housing Tax Credit Properties</a>: rent limits tied to area median income.</li>
+<li><a href="https://www.boston.gov/node/15870126">City of Boston, example city-land RFP</a>: shows the issue-to-response window only. Selection and conveyance timing are not published, so that step is left out of the chart.</li>
+</ol>
+
+<div class="ft">Draft for discussion; for planning purposes only. Every figure is linked to a public source or marked as an adjustable assumption. The payer chain for market-rate, the shock-absorber idea and the stack shapes are reasoning to test, not findings. No deal files, models or interview material are used.</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+document.querySelectorAll('.pay').forEach(b=>b.onclick=()=>b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')==='true'?'false':'true'));
+const f=n=>'$'+Math.round(n).toLocaleString('en-US');
+const fm=n=>n>=1e6?'$'+(n/1e6).toFixed(1)+'M':'$'+Math.round(n/1e3)+'K';
+function calc(){
+  const gap=+$('gap').value,tdc=+$('tdc').value,u=+$('units').value,d=+$('d').value/100,r=+$('r').value/100,hc=+$('hc').value,m=+$('m').value,B=10e6;
+  $('v-gap').textContent=f(gap);$('v-tdc').textContent=f(tdc);$('v-units').textContent=u;$('v-d').textContent=(d*100).toFixed(1)+'%';$('v-r').textContent=(r*100).toFixed(1)+' pts';$('v-hc').textContent=f(hc);$('v-m').textContent=m+' mo';
+  const A=B/gap,Bs=B*r,perMonth=u*tdc*d/12,projects=B/hc,Cs=projects*perMonth*m,Cue=Cs/gap,be=hc/perMonth;
+  $('oA').textContent=A.toFixed(0)+' units';
+  $('oA2').textContent='one time; the money is spent';
+  $('oB').textContent=fm(Bs)+'/yr';
+  $('oB2').textContent='≈ '+(Bs/gap).toFixed(1)+' units of subsidy a year';
+  $('oC').textContent=fm(Cs);
+  $('oC2').textContent=projects.toFixed(0)+' projects × '+m+' mo ≈ '+Cue.toFixed(0)+' units if recaptured';
+  $('be').innerHTML='<strong>Break-even:</strong> spending on handoff owners beats closing the gap if it saves more than <strong>'+be.toFixed(1)+' months</strong> per project. Each month of delay costs about '+fm(perMonth)+' on a project this size. Cheap interest alone is small money next to cost growth.';
+}
+document.querySelectorAll('input[type=range]').forEach(i=>i.oninput=calc);calc();
+</script>
+</body>
+</html>
