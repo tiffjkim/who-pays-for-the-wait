@@ -85,6 +85,18 @@ ol.q li::before{content:counter(q);position:absolute;left:12px;top:9px;width:20p
 .src{font-size:.74rem;color:var(--text2);padding-left:1.1rem}.src li{margin:0 0 5px}
 a{color:var(--blue)}
 .ft{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--border2);font-size:.68rem;color:var(--text3);line-height:1.7}
+
+select{font:inherit;font-size:.8rem;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:6px 10px}
+.tw{overflow-x:auto;margin:8px 0;border:1px solid var(--border);border-radius:var(--rl)}
+table{width:100%;border-collapse:collapse;font-size:.78rem;min-width:560px}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--border)}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.62rem;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.04em;background:var(--bg2)}
+td{font-family:var(--mono)}td:first-child{font-family:var(--font);font-weight:500}
+tr:last-child td{border-bottom:none}tr.ev td{background:var(--bg2);font-weight:600}
+.sbar{display:grid;grid-template-columns:130px 1fr 80px;gap:10px;align-items:center;margin:5px 0;font-size:.78rem}
+.sbar .tr{height:22px;background:var(--bg3);border-radius:6px;overflow:hidden}.sbar .tr i{display:block;height:100%;background:var(--amber);border-radius:6px}
+.sbar .mo{font-family:var(--mono);text-align:right;color:var(--text2)}
 @media print{body{background:#fff;color:#000}.c{max-width:100%;padding:0}input[type=range]{display:none}.verdict,.m,.cd,.chart,.stk{break-inside:avoid}}
 </style>
 </head>
@@ -124,59 +136,45 @@ a{color:var(--blue)}
 <p style="font-size:.7rem;color:var(--text3)">Stack illustrative. Source counts and cost figures: Massachusetts Home for Everyone construction finance explainer.</p>
 
 <h2>2. The clock: when does the shovel go in?</h2>
-<p class="lead">Dollars sit in the ground while the deal waits. The shaded blocks are capital waiting; the ghost bars show how far the start date can move.</p>
+<p class="lead">Time runs left to right. Cost runs bottom to top: the capital sitting in each unit. Pick a deal type and change the assumptions. Every number is an adjustable placeholder.</p>
 
-<div class="chart">
-<svg viewBox="0 0 780 440" role="img" aria-label="Capital in the ground per unit over time. Market-rate shovel at about month 16, up to month 28 if credit is tight. Affordable shovel at about month 33, 42 or 51 depending on whether it wins in the first, second or third funding round.">
-<!-- market panel baseline y=170 -->
-<text class="t1" x="0" y="14">MARKET-RATE · answers in hand at closing</text>
-<line x1="0" y1="170" x2="720" y2="170" stroke="var(--text)" stroke-width="1.5"/>
-<!-- ghost ramp tight credit: shovel 28 -->
-<rect x="0" y="160" width="160" height="10" fill="var(--blue)"/>
-<polygon points="160,170 160,160 400,60 400,170" fill="var(--amber)"/>
-<rect x="400" y="60" width="120" height="110" fill="var(--green)" opacity=".75"/>
-<polygon points="280,170 280,160 520,60 520,170" fill="var(--amber)" opacity=".28" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="4 3"/>
-<line x1="280" y1="30" x2="280" y2="170" stroke="var(--text2)" stroke-dasharray="2 4"/>
-<text x="286" y="30">tight credit: ~month 28</text>
-<line x1="160" y1="30" x2="160" y2="170" stroke="var(--text2)" stroke-dasharray="5 4"/>
-<text x="166" y="42">Shovel ~month 16</text>
-<text x="404" y="52" class="mono">lease-up</text>
-<text x="4" y="150">land capital waits</text>
-<!-- affordable panel baseline y=400 -->
-<text class="t1" x="0" y="214">AFFORDABLE · answers arrive one round at a time</text>
-<line x1="0" y1="400" x2="720" y2="400" stroke="var(--text)" stroke-width="1.5"/>
-<polygon points="510,400 510,368 750,268 750,400" fill="var(--amber)" opacity=".12" stroke="var(--amber)" stroke-dasharray="4 3"/>
-<polygon points="420,400 420,368 660,268 660,400" fill="var(--amber)" opacity=".2" stroke="var(--amber)" stroke-dasharray="4 3"/>
-<rect x="0" y="368" width="420" height="32" fill="var(--blue)"/>
-<polygon points="330,400 330,368 570,268 570,400" fill="var(--amber)"/>
-<rect x="0" y="368" width="330" height="32" fill="var(--blue)"/>
-<line x1="330" y1="226" x2="330" y2="400" stroke="var(--text2)" stroke-dasharray="5 4"/>
-<line x1="420" y1="226" x2="420" y2="400" stroke="var(--text2)" stroke-dasharray="2 4"/>
-<line x1="510" y1="226" x2="510" y2="400" stroke="var(--text2)" stroke-dasharray="2 4"/>
-<text x="334" y="238" class="t1">Round 1: ~month 33</text>
-<text x="424" y="252">Round 2: ~42</text>
-<text x="514" y="266">Round 3: ~51</text>
-<text x="8" y="392" style="fill:#fff" class="t1">land and predevelopment capital waits, and keeps growing</text>
-<!-- uncertainty brackets -->
-<rect x="330" y="410" width="180" height="8" rx="3" fill="var(--amber)" opacity=".6"/>
-<text x="330" y="434" class="t1">Start date can land anywhere in this range</text>
-<rect x="160" y="180" width="120" height="8" rx="3" fill="var(--green)" opacity=".6"/>
-<text x="286" y="187">narrow range: months 16 to 28</text>
-<!-- axis -->
-<g class="mono" style="font-size:10px">
-<text x="0" y="418">Yr 0</text>
-</g>
-</svg>
-</div>
-<div class="key"><span><i style="background:var(--blue)"></i>Capital waiting</span><span><i style="background:var(--amber)"></i>Construction (capital in the ground)</span><span><i style="background:var(--green)"></i>Lease-up</span><span>Scale: 10 px ≈ 1 month</span></div>
-<div class="ms">
-<div class="m bl"><div class="ml">One funding round</div><div class="mv">~9 mo</div><div class="mn">notice to award</div></div>
-<div class="m am"><div class="ml">Rounds typically needed</div><div class="mv">2+</div><div class="mn">9% credits, Massachusetts</div></div>
-<div class="m bl"><div class="ml">Boston large-project review</div><div class="mv">10 mo</div><div class="mn">median; tail of 3–4 yrs</div></div>
-</div>
-<div class="cd am"><p><strong>Illustrative, not measured.</strong> Months come from the sources below. The shapes are per-unit and schematic. The rounds are the story: each missed round moves the shovel about nine months, and the capital already in the ground keeps waiting.</p></div>
+<div class="ctrl"><span class="cl">Deal</span><select id="dealSel"><option value="market">Market-rate</option><option value="aff" selected>Affordable, competitive funding</option><option value="pub">Affordable on public land</option></select></div>
+<div class="ctrl"><span class="cl">Compare with</span><select id="cmpSel"><option value="none">Nothing</option><option value="market" selected>Market-rate</option><option value="aff">Affordable, competitive funding</option><option value="pub">Affordable on public land</option></select></div>
+<div class="ctrl"><span class="cl">Approvals (months)</span><input type="range" id="kA" min="3" max="36" step="1"><span class="cv" id="vA"></span></div>
+<div class="ctrl"><span class="cl">Funding rounds needed</span><input type="range" id="kN" min="0" max="5" step="1"><span class="cv" id="vN"></span></div>
+<div class="ctrl"><span class="cl">Months per funding round</span><input type="range" id="kR" min="6" max="12" step="1"><span class="cv" id="vR"></span></div>
+<div class="ctrl"><span class="cl">Construction (months)</span><input type="range" id="kB" min="12" max="36" step="1"><span class="cv" id="vB"></span></div>
+<div class="ctrl"><span class="cl">Cost growth while waiting (% a year)</span><input type="range" id="kE" min="0" max="12" step="0.5"><span class="cv" id="vE"></span></div>
+<div class="ctrl"><span class="cl">Cost of money (% a year)</span><input type="range" id="kI" min="3" max="12" step="0.5"><span class="cv" id="vI"></span></div>
+<details style="margin:8px 0"><summary style="font-size:.78rem;color:var(--text2);cursor:pointer">More assumptions</summary>
+<div class="ctrl"><span class="cl">Site work before approvals (months)</span><input type="range" id="kS" min="0" max="36" step="1"><span class="cv" id="vS"></span></div>
+<div class="ctrl"><span class="cl">Closing the stack (months)</span><input type="range" id="kC" min="0" max="18" step="1"><span class="cv" id="vC"></span></div>
+<div class="ctrl"><span class="cl">Lease-up (months)</span><input type="range" id="kU" min="0" max="24" step="1"><span class="cv" id="vU"></span></div>
+<div class="ctrl"><span class="cl">Land ($K per unit)</span><input type="range" id="kL" min="0" max="150" step="5"><span class="cv" id="vL"></span></div>
+<div class="ctrl"><span class="cl">Predevelopment ($K per unit)</span><input type="range" id="kP" min="0" max="150" step="5"><span class="cv" id="vP"></span></div>
+<div class="ctrl"><span class="cl">Total cost today ($K per unit)</span><input type="range" id="kT" min="250" max="900" step="10"><span class="cv" id="vT"></span></div>
+</details>
 
-<h2>3. Is the affordable wait really longer?</h2>
+<div class="chart"><svg id="clockSvg" viewBox="0 0 780 400" role="img" aria-label="Capital in the ground per unit over time for the selected deal type"></svg></div>
+<div class="key"><span><i style="background:var(--blue)"></i>Capital waiting</span><span><i style="background:var(--amber)"></i>Construction</span><span><i style="background:var(--green)"></i>Lease-up</span><span><i style="border:1.5px dashed var(--text2);background:none"></i>Comparison deal</span></div>
+<div class="ms" id="clockTiles"></div>
+<div class="cd am"><p><strong>Illustrative, not measured.</strong> Months and cost growth come from the sources below or are placeholders you can change. Cost growth is applied to the part of the cost not yet bought when the shovel goes in. Sequence: site work, approvals, funding rounds, closing, then construction. Market-rate has no funding rounds; its closing months stand in for debt and equity.</p></div>
+
+<h2>3. Affordable: scenario planning</h2>
+<p class="lead">The date the money arrives is a range, and each missed round moves it nine months. Set the odds of winning in each round, and see what the range costs.</p>
+<div class="ctrl"><span class="cl">Chance of winning in round 1</span><input type="range" id="p1" min="0" max="100" step="5" value="20"><span class="cv" id="vp1"></span></div>
+<div class="ctrl"><span class="cl">Chance in round 2</span><input type="range" id="p2" min="0" max="100" step="5" value="45"><span class="cv" id="vp2"></span></div>
+<div class="ctrl"><span class="cl">Chance in round 3 or later</span><span style="flex:1"></span><span class="cv" id="vp3"></span></div>
+<div class="ctrl"><span class="cl">Funding sources in the stack</span><input type="range" id="sSrc" min="2" max="10" step="1" value="5"><span class="cv" id="vSrc"></span></div>
+<div class="ctrl"><span class="cl">Units in the project</span><input type="range" id="sU" min="20" max="200" step="5" value="80"><span class="cv" id="vU2"></span></div>
+<div class="ctrl"><span class="cl">Cost growth while waiting (% a year)</span><input type="range" id="sE" min="0" max="12" step="0.5" value="6"><span class="cv" id="vE2"></span></div>
+<div class="ctrl"><span class="cl">Share of added cost the public line covers</span><input type="range" id="sShare" min="0" max="100" step="10" value="80"><span class="cv" id="vShare"></span></div>
+<div class="ctrl"><span class="cl">Land comes from a public RFP</span><label style="font-size:.8rem"><input type="checkbox" id="sPub"> adds 12 months, an assumption</label></div>
+<div id="scenBars" style="margin:14px 0 6px"></div>
+<div class="tw"><table id="scenTbl"></table></div>
+<div class="cd am"><p><strong>How to read it.</strong> The "extra cost" column is what the wait adds compared with winning in round 1: cost growth on the part not yet bought, plus the cost of each source beyond three (about 1.7% of cost per source, Terner Center). Odds are placeholders. Replace them with your own pipeline's record. A project that never wins a round has to be restructured, which is not modeled here.</p></div>
+
+<h2>4. Is the affordable wait really longer?</h2>
 <p class="lead">Not necessarily on average. That is the interesting part.</p>
 <div class="verdicts">
 <div class="verdict"><div class="vt">What the research says</div><p>The Atlanta Fed finds little difference in development time between publicly and privately funded multifamily projects. Planning and permitting run 3–4 months longer than construction.</p></div>
@@ -185,7 +183,7 @@ a{color:var(--blue)}
 </div>
 <p style="font-size:.7rem;color:var(--text3)">The hypothesis is ours and not a finding of the paper. Also reported: durations are longer in the Northeast and West, and in mixed-use and conversion projects.</p>
 
-<h2>4. Who pays for the wait</h2>
+<h2>5. Who pays for the wait</h2>
 <p class="lead">The cost moves down the chain until someone can pass it on. Tap a card to see why, and what to ask.</p>
 <div class="chain">
 <div>
@@ -213,7 +211,7 @@ a{color:var(--blue)}
 </div>
 <div class="cd rd"><p><strong>Hypothesis: where the cost goes when the wall holds.</strong> Back to the public line. A deal stalls when its last absorber is spent: market-rate when returns fall below what equity will accept, affordable when the subsidy line cannot grow. In a tight market, market-rate deals lose their cushion and start looking for public money too.</p></div>
 
-<h2>5. If you had $10 million</h2>
+<h2>6. If you had $10 million</h2>
 <p class="lead">Money can do three things about a wait: close the gap, make waiting cheaper, or make it shorter. Move the sliders. Defaults are placeholders.</p>
 <div class="ctrl"><span class="cl">Public subsidy needed per unit</span><input type="range" min="50000" max="400000" step="10000" value="200000" id="gap"><span class="cv" id="v-gap"></span></div>
 <div class="ctrl"><span class="cl">Total development cost per unit</span><input type="range" min="300000" max="900000" step="10000" value="650000" id="tdc"><span class="cv" id="v-tdc"></span></div>
@@ -229,6 +227,8 @@ a{color:var(--blue)}
 </div>
 <div class="cd gn"><p id="be"></p></div>
 <div class="cd am"><p><strong>Read with care.</strong> Delay cost avoided is not the same as units delivered; it becomes units only if projects then need less subsidy. "Months saved" is the number that matters, and nothing here measures it. This is arithmetic for the argument, not a forecast.</p></div>
+
+<div class="cd gn"><p><strong>Put your own split in the room's table.</strong> <a href="https://claude.ai/artifact/3ey4bPyHprQtDkFyFoNdfC">Submit your $10M split</a>: your name, how you would divide it, and what you think is actually necessary. Everyone's answers build one shared table.</p></div>
 
 <h2>Questions for the room</h2>
 <ol class="q">
@@ -269,6 +269,93 @@ function calc(){
   $('be').innerHTML='<strong>Break-even:</strong> spending on handoff owners beats closing the gap if it saves more than <strong>'+be.toFixed(1)+' months</strong> per project. Each month of delay costs about '+fm(perMonth)+' on a project this size. Cheap interest alone is small money next to cost growth.';
 }
 document.querySelectorAll('input[type=range]').forEach(i=>i.oninput=calc);calc();
+
+/* ---------- clock chart ---------- */
+const PRE={
+ market:{S:2,A:10,N:0,R:9,C:4,B:24,U:12,L:40,P:10,T:480},
+ aff:{S:6,A:10,N:2,R:9,C:8,B:24,U:0,L:40,P:60,T:650},
+ pub:{S:18,A:10,N:2,R:9,C:8,B:24,U:0,L:5,P:60,T:650}
+};
+const NAME={market:'Market-rate',aff:'Affordable, competitive funding',pub:'Affordable on public land'};
+const cfg=Object.assign({},PRE.aff,{e:6,i:7});
+function mdl(c){
+  const shovel=c.S+c.A+c.N*c.R+c.C, complete=shovel+c.B, end=complete+c.U;
+  const hard=c.T-c.L-c.P, esc=hard*c.e/100*shovel/12, total=c.T+esc;
+  const cap=t=>{ if(t<0)return 0; if(t<=shovel)return c.L+c.P*(shovel?t/shovel:1); if(t<=complete)return c.L+c.P+(total-c.L-c.P)*((t-shovel)/c.B); return total; };
+  let area=0; for(let t=0;t<shovel;t+=.5)area+=cap(t+.25)*.5;
+  return {shovel,complete,end,total,esc,cap,waitCarry:area/12*c.i/100};
+}
+const SV=document.getElementById('clockSvg');
+function ns(tag,attrs,txt){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(txt!=null)e.textContent=txt;return e}
+function drawClock(){
+  const A=mdl(cfg), cmpKey=document.getElementById('cmpSel').value;
+  const B=cmpKey==='none'?null:mdl(Object.assign({},PRE[cmpKey],{e:cfg.e,i:cfg.i}));
+  const W=780,H=400,l=60,r=16,t=20,b=50,pw=W-l-r,ph=H-t-b;
+  const xmax=Math.max(60,Math.ceil(Math.max(A.end,B?B.end:0)/12)*12);
+  const ymax=Math.max(800,Math.ceil(Math.max(A.total,B?B.total:0)/200)*200);
+  const X=m=>l+m/xmax*pw, Y=v=>t+ph-v/ymax*ph;
+  SV.textContent='';
+  for(let v=0;v<=ymax;v+=200){SV.appendChild(ns('line',{x1:l,x2:l+pw,y1:Y(v),y2:Y(v),stroke:'var(--border)','stroke-width':1}));SV.appendChild(ns('text',{x:l-8,y:Y(v)+4,'text-anchor':'end'},'$'+v+'K'))}
+  for(let m=0;m<=xmax;m+=12){SV.appendChild(ns('line',{x1:X(m),x2:X(m),y1:t,y2:t+ph,stroke:'var(--border)','stroke-width':1}));SV.appendChild(ns('text',{x:X(m),y:t+ph+16,'text-anchor':'middle'},m===0?'Year 0':'Year '+m/12))}
+  SV.appendChild(ns('line',{x1:l,x2:l+pw,y1:t+ph,y2:t+ph,stroke:'var(--text)','stroke-width':1.5}));
+  SV.appendChild(ns('line',{x1:l,x2:l,y1:t,y2:t+ph,stroke:'var(--text)','stroke-width':1.5}));
+  SV.appendChild(ns('text',{x:l+pw/2,y:H-8,'text-anchor':'middle',class:'t1'},'Time since site control (years)'));
+  SV.appendChild(ns('text',{x:14,y:t+ph/2,'text-anchor':'middle',transform:'rotate(-90 14 '+(t+ph/2)+')',class:'t1'},'Capital in the ground per unit ($K)'));
+  const poly=(t0,t1,col,op)=>{let pts=[X(t0)+','+Y(0)];for(let m=t0;m<=t1+.001;m+=.5)pts.push(X(m)+','+Y(A.cap(Math.min(m,t1))));pts.push(X(t1)+','+Y(0));SV.appendChild(ns('polygon',{points:pts.join(' '),fill:col,opacity:op}))};
+  poly(0,A.shovel,'var(--blue)',1);poly(A.shovel,A.complete,'var(--amber)',1);if(cfg.U>0)poly(A.complete,A.end,'var(--green)',.8);
+  if(B){let pts=[];for(let m=0;m<=B.end+.001;m+=.5)pts.push(X(m)+','+Y(B.cap(m)));pts.push(X(B.end)+','+Y(0));SV.appendChild(ns('polyline',{points:pts.join(' '),fill:'none',stroke:'var(--text2)','stroke-width':2,'stroke-dasharray':'6 4'}));
+    SV.appendChild(ns('line',{x1:X(B.shovel),x2:X(B.shovel),y1:t,y2:t+ph,stroke:'var(--text2)','stroke-dasharray':'2 4'}));
+    SV.appendChild(ns('text',{x:X(B.shovel)+4,y:t+12,style:'font-size:10px'},NAME[cmpKey]+': shovel month '+B.shovel))}
+  SV.appendChild(ns('line',{x1:X(A.shovel),x2:X(A.shovel),y1:t,y2:t+ph,stroke:'var(--text)','stroke-dasharray':'5 4'}));
+  const lab=ns('text',{x:X(A.shovel)+(A.shovel>xmax*.7?-4:4),y:t+26,'text-anchor':A.shovel>xmax*.7?'end':'start',class:'t1'},'Shovel: month '+A.shovel);SV.appendChild(lab);
+  SV.appendChild(ns('text',{x:X(A.complete),y:Y(A.total)-6,'text-anchor':'middle',class:'t1'},'$'+Math.round(A.total)+'K'));
+  const tiles=[['bl','Shovel date','month '+A.shovel,'year '+(A.shovel/12).toFixed(1)],['am','Cost at completion','$'+Math.round(A.total)+'K','per unit'],['rd','Added by waiting','$'+Math.round(A.esc)+'K','cost growth on what is not yet bought'],['bl','Cost of money while waiting','$'+Math.round(A.waitCarry*1000)/1000*1000/1000+'K','per unit, before the shovel']];
+  tiles[3][2]='$'+(A.waitCarry).toFixed(1)+'K';
+  document.getElementById('clockTiles').innerHTML=tiles.map(x=>'<div class="m '+x[0]+'"><div class="ml">'+x[1]+'</div><div class="mv">'+x[2]+'</div><div class="mn">'+x[3]+'</div></div>').join('');
+}
+const K=['A','N','R','B','S','C','U','L','P','T'];
+function syncSliders(){
+  K.forEach(k=>{const el=document.getElementById('k'+k);el.value=cfg[k];document.getElementById('v'+k).textContent=cfg[k]+(['L','P','T'].includes(k)?'':(k==='N'?'':' mo'))});
+  document.getElementById('vL').textContent='$'+cfg.L+'K';document.getElementById('vP').textContent='$'+cfg.P+'K';document.getElementById('vT').textContent='$'+cfg.T+'K';
+  document.getElementById('kE').value=cfg.e;document.getElementById('vE').textContent=cfg.e+'%';
+  document.getElementById('kI').value=cfg.i;document.getElementById('vI').textContent=cfg.i+'%';
+}
+K.forEach(k=>document.getElementById('k'+k).addEventListener('input',e=>{cfg[k]=+e.target.value;syncSliders();drawClock()}));
+document.getElementById('kE').addEventListener('input',e=>{cfg.e=+e.target.value;syncSliders();drawClock()});
+document.getElementById('kI').addEventListener('input',e=>{cfg.i=+e.target.value;syncSliders();drawClock()});
+document.getElementById('dealSel').addEventListener('change',e=>{Object.assign(cfg,PRE[e.target.value]);syncSliders();drawClock()});
+document.getElementById('cmpSel').addEventListener('change',drawClock);
+syncSliders();drawClock();
+
+/* ---------- affordable scenarios ---------- */
+function scen(){
+  const p1=+document.getElementById('p1').value, p2Raw=+document.getElementById('p2').value;
+  const p2=Math.min(p2Raw,100-p1), p3=100-p1-p2;
+  const src=+document.getElementById('sSrc').value, units=+document.getElementById('sU').value, e=+document.getElementById('sE').value/100, share=+document.getElementById('sShare').value/100;
+  const pub=document.getElementById('sPub').checked;
+  document.getElementById('vp1').textContent=p1+'%';document.getElementById('vp2').textContent=p2+'%';document.getElementById('vp3').textContent=p3+'%';
+  document.getElementById('vSrc').textContent=src;document.getElementById('vU2').textContent=units;document.getElementById('vE2').textContent=(e*100).toFixed(1)+'%';document.getElementById('vShare').textContent=Math.round(share*100)+'%';
+  const base=Object.assign({},PRE[pub?'pub':'aff']);
+  const T=base.T, hard=T-base.L-base.P, adder=Math.max(0,src-3)*0.017*T;
+  const rows=[['Win in round 1',1,p1],['Win in round 2',2,p2],['Win in round 3 or later',3,p3]].map(r=>{
+    const shovel=base.S+base.A+r[1]*base.R+base.C;
+    const cost=T+hard*e*shovel/12+adder;
+    return {name:r[0],shovel,cost,p:r[2]/100};
+  });
+  const best=rows[0].cost;
+  rows.forEach(r=>{r.extra=r.cost-best;r.proj=r.extra*units/1000;r.pub=r.proj*share});
+  const ev={shovel:rows.reduce((a,r)=>a+r.p*r.shovel,0),cost:rows.reduce((a,r)=>a+r.p*r.cost,0)};
+  ev.extra=ev.cost-best;ev.proj=ev.extra*units/1000;ev.pub=ev.proj*share;
+  const bars=document.getElementById('scenBars');bars.textContent='';
+  rows.forEach(r=>{const d=document.createElement('div');d.className='sbar';d.innerHTML='<span>'+r.name+'</span><span class="tr"><i style="width:'+Math.round(r.p*100)+'%"></i></span><span class="mo">month '+r.shovel+'</span>';bars.appendChild(d)});
+  const f=v=>'$'+Math.round(v)+'K', m=v=>'$'+v.toFixed(2)+'M';
+  let h='<thead><tr><th>Scenario</th><th>Chance</th><th>Shovel</th><th>Cost per unit</th><th>Extra per unit</th><th>Extra, whole project</th><th>Public line covers</th></tr></thead><tbody>';
+  rows.forEach(r=>{h+='<tr><td>'+r.name+'</td><td>'+Math.round(r.p*100)+'%</td><td>month '+r.shovel+'</td><td>'+f(r.cost)+'</td><td>'+f(r.extra)+'</td><td>'+m(r.proj)+'</td><td>'+m(r.pub)+'</td></tr>'});
+  h+='<tr class="ev"><td>Expected</td><td>100%</td><td>month '+ev.shovel.toFixed(0)+'</td><td>'+f(ev.cost)+'</td><td>'+f(ev.extra)+'</td><td>'+m(ev.proj)+'</td><td>'+m(ev.pub)+'</td></tr></tbody>';
+  document.getElementById('scenTbl').innerHTML=h;
+}
+['p1','p2','sSrc','sU','sE','sShare','sPub'].forEach(id=>document.getElementById(id).addEventListener('input',scen));
+scen();
 </script>
 </body>
 </html>
