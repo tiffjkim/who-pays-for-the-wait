@@ -440,7 +440,7 @@ $('wD').addEventListener('input',who);who();
 
 /* ---------- $10M split form -> Google Form -> Sheet ---------- */
 // After the Google Form exists, fill action and entry ids here (see README).
-const FORM={action:'',entry:{name:'',role:'',a:'',b:'',c:'',need:'',mind:''}};
+const FORM={action:'https://docs.google.com/forms/d/e/1FAIpQLSdmEyMkn_fRiZ87cEv6c77rBTyxAWZ4UfLqMhpsgmiJOP50Uw/formResponse',entry:{name:'entry.410493652',role:'entry.972337111',a:'entry.967911847',b:'entry.91354423',c:'entry.1176170238',need:'entry.1639874506',mind:'entry.2138065907'}};
 function split(){
   let a=+$('sA').value,b=+$('sB').value; if(a+b>10){b=10-a;$('sB').value=b}
   const c=10-a-b;
