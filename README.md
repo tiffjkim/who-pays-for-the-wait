@@ -11,3 +11,12 @@ gh repo create who-pays-for-the-wait --public --source=. --push
 ```
 
 Every number on the page is either linked to a public source or labeled as an adjustable assumption. No deal files, models, or interview material are used.
+
+## Connecting the $10M split form to a Google Sheet
+
+In `index.html`, find `const FORM=` and fill in:
+
+- `action`: the Google Form's `formResponse` URL
+- `entry`: the `entry.NNNN` id for each question (name, role, a, b, c, need, mind)
+
+Until then, the Submit button copies the answers instead of sending them.

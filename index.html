@@ -98,6 +98,35 @@ tr:last-child td{border-bottom:none}tr.ev td{background:var(--bg2);font-weight:6
 .sbar .tr{height:22px;background:var(--bg3);border-radius:6px;overflow:hidden}.sbar .tr i{display:block;height:100%;background:var(--amber);border-radius:6px}
 .sbar .mo{font-family:var(--mono);text-align:right;color:var(--text2)}
 @media print{body{background:#fff;color:#000}.c{max-width:100%;padding:0}input[type=range]{display:none}.verdict,.m,.cd,.chart,.stk{break-inside:avoid}}
+
+.pt{background:var(--blue-bg);border-left:4px solid var(--blue);border-radius:var(--r);padding:10px 14px;margin:6px 0 12px;font-size:.92rem;color:var(--text);line-height:1.5;max-width:68ch}
+.pt b{display:block;font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;color:var(--blue-text);margin-bottom:2px}
+.fine{font-size:.72rem;color:var(--text3);margin:6px 0}
+details.play{margin:12px 0;border:1px solid var(--border);border-radius:var(--rl);padding:2px 14px 8px;background:var(--bg)}
+details.play summary{cursor:pointer;font-size:.82rem;font-weight:500;color:var(--text);padding:10px 0;list-style:none}
+details.play summary::before{content:"+ ";font-family:var(--mono);color:var(--blue)}
+details.play[open] summary::before{content:"– "}
+.stg{background:var(--bg2);border:1px solid var(--border2);border-left:4px solid var(--blue);border-radius:var(--r);padding:10px 12px;margin:0 0 4px}
+.stg.ok{border-left-color:var(--green)}
+.stg .pn{font-size:.62rem;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.05em;display:block}
+.stg b{display:block;font-size:.9rem;font-weight:600}
+.stg .pm{font-size:.76rem;color:var(--text2);display:block;margin-top:1px}
+.seats{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+@media(max-width:420px){.seats{grid-template-columns:1fr}}
+.seat{background:var(--bg2);border:1px solid var(--border2);border-top:3px solid var(--amber);border-radius:var(--r);padding:8px 10px;font-size:.74rem}
+.seat b{display:block;font-size:.8rem;font-weight:600;color:var(--text)}
+.seat span{color:var(--text2);display:block;margin-top:1px}
+.seat.lock{border-top-color:var(--red);background:repeating-linear-gradient(135deg,var(--red-bg) 0 10px,var(--bg2) 10px 20px)}
+.frm{background:var(--bg2);border-radius:var(--rl);padding:14px;margin:8px 0}
+.fl{display:block;font-size:.78rem;font-weight:500;color:var(--text2);margin:0 0 10px}
+.fl .opt{font-weight:400;color:var(--text3)}
+.fl input[type=text],.fl textarea{display:block;width:100%;margin-top:4px;font:inherit;font-size:.86rem;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px}
+.splitbar{display:flex;height:22px;border-radius:7px;overflow:hidden;margin:8px 0 4px;background:var(--bg3)}
+.splitbar i{display:block;height:100%}
+#bA{background:var(--green)}#bB{background:var(--blue)}#bC{background:var(--amber)}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0}
+.btn{font:inherit;font-size:.86rem;font-weight:600;background:var(--text);color:var(--bg);border:none;border-radius:var(--r);padding:9px 18px;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:default}
 </style>
 </head>
 <body>
@@ -135,33 +164,36 @@ tr:last-child td{border-bottom:none}tr.ev td{background:var(--bg2);font-weight:6
 </div>
 <p style="font-size:.7rem;color:var(--text3)">Stack illustrative. Source counts and cost figures: Massachusetts Home for Everyone construction finance explainer.</p>
 
-<h2>2. The clock: when does the shovel go in?</h2>
-<p class="lead">Time runs left to right. Cost runs bottom to top: the capital sitting in each unit. Pick a deal type and change the assumptions. Every number is an adjustable placeholder.</p>
 
+<h2>2. The clock: when does the shovel go in?</h2>
+<div class="pt"><b>The point</b>In market-rate the shovel date is mostly the day the debt closes. In affordable it is a count of funding rounds, and you don't set it.</div>
 <div class="ctrl"><span class="cl">Deal</span><select id="dealSel"><option value="market">Market-rate</option><option value="aff" selected>Affordable, competitive funding</option><option value="pub">Affordable on public land</option></select></div>
 <div class="ctrl"><span class="cl">Compare with</span><select id="cmpSel"><option value="none">Nothing</option><option value="market" selected>Market-rate</option><option value="aff">Affordable, competitive funding</option><option value="pub">Affordable on public land</option></select></div>
+<div class="chart"><svg id="clockSvg" viewBox="0 0 780 400" role="img" aria-label="Capital in the ground per unit over time for the selected deal type"></svg></div>
+<div class="key"><span><i style="background:var(--blue)"></i>Capital waiting</span><span><i style="background:var(--amber)"></i>Construction</span><span><i style="background:var(--green)"></i>Lease-up</span><span><i style="border:1.5px dashed var(--text2);background:none"></i>Comparison deal</span></div>
+<div class="ms" id="clockTiles"></div>
+<details class="play"><summary>Play with the assumptions</summary>
 <div class="ctrl"><span class="cl">Approvals (months)</span><input type="range" id="kA" min="3" max="36" step="1"><span class="cv" id="vA"></span></div>
 <div class="ctrl"><span class="cl">Funding rounds needed</span><input type="range" id="kN" min="0" max="5" step="1"><span class="cv" id="vN"></span></div>
 <div class="ctrl"><span class="cl">Months per funding round</span><input type="range" id="kR" min="6" max="12" step="1"><span class="cv" id="vR"></span></div>
 <div class="ctrl"><span class="cl">Construction (months)</span><input type="range" id="kB" min="12" max="36" step="1"><span class="cv" id="vB"></span></div>
 <div class="ctrl"><span class="cl">Cost growth while waiting (% a year)</span><input type="range" id="kE" min="0" max="12" step="0.5"><span class="cv" id="vE"></span></div>
 <div class="ctrl"><span class="cl">Cost of money (% a year)</span><input type="range" id="kI" min="3" max="12" step="0.5"><span class="cv" id="vI"></span></div>
-<details style="margin:8px 0"><summary style="font-size:.78rem;color:var(--text2);cursor:pointer">More assumptions</summary>
 <div class="ctrl"><span class="cl">Site work before approvals (months)</span><input type="range" id="kS" min="0" max="36" step="1"><span class="cv" id="vS"></span></div>
 <div class="ctrl"><span class="cl">Closing the stack (months)</span><input type="range" id="kC" min="0" max="18" step="1"><span class="cv" id="vC"></span></div>
 <div class="ctrl"><span class="cl">Lease-up (months)</span><input type="range" id="kU" min="0" max="24" step="1"><span class="cv" id="vU"></span></div>
 <div class="ctrl"><span class="cl">Land ($K per unit)</span><input type="range" id="kL" min="0" max="150" step="5"><span class="cv" id="vL"></span></div>
 <div class="ctrl"><span class="cl">Predevelopment ($K per unit)</span><input type="range" id="kP" min="0" max="150" step="5"><span class="cv" id="vP"></span></div>
 <div class="ctrl"><span class="cl">Total cost today ($K per unit)</span><input type="range" id="kT" min="250" max="900" step="10"><span class="cv" id="vT"></span></div>
+<p class="fine">Illustrative, not measured. Months and cost growth come from the sources below or are placeholders. Cost growth applies to the part of the cost not yet bought when the shovel goes in. Sequence: site work, approvals, funding rounds, closing, construction.</p>
 </details>
 
-<div class="chart"><svg id="clockSvg" viewBox="0 0 780 400" role="img" aria-label="Capital in the ground per unit over time for the selected deal type"></svg></div>
-<div class="key"><span><i style="background:var(--blue)"></i>Capital waiting</span><span><i style="background:var(--amber)"></i>Construction</span><span><i style="background:var(--green)"></i>Lease-up</span><span><i style="border:1.5px dashed var(--text2);background:none"></i>Comparison deal</span></div>
-<div class="ms" id="clockTiles"></div>
-<div class="cd am"><p><strong>Illustrative, not measured.</strong> Months and cost growth come from the sources below or are placeholders you can change. Cost growth is applied to the part of the cost not yet bought when the shovel goes in. Sequence: site work, approvals, funding rounds, closing, then construction. Market-rate has no funding rounds; its closing months stand in for debt and equity.</p></div>
-
-<h2>3. Affordable: scenario planning</h2>
-<p class="lead">The date the money arrives is a range, and each missed round moves it nine months. Set the odds of winning in each round, and see what the range costs.</p>
+<h2>3. Affordable: the date is a range</h2>
+<div class="pt"><b>The point</b>A funding date isn't one number. Each missed round pushes the shovel back about nine months, and the extra cost lands on the public line.</div>
+<div id="scenBars" style="margin:12px 0 4px"></div>
+<p class="fine">Bar = chance of each outcome. Right = the month the shovel goes in.</p>
+<div class="ms" id="scenTiles"></div>
+<details class="play"><summary>Play with the odds</summary>
 <div class="ctrl"><span class="cl">Chance of winning in round 1</span><input type="range" id="p1" min="0" max="100" step="5" value="20"><span class="cv" id="vp1"></span></div>
 <div class="ctrl"><span class="cl">Chance in round 2</span><input type="range" id="p2" min="0" max="100" step="5" value="45"><span class="cv" id="vp2"></span></div>
 <div class="ctrl"><span class="cl">Chance in round 3 or later</span><span style="flex:1"></span><span class="cv" id="vp3"></span></div>
@@ -170,49 +202,70 @@ tr:last-child td{border-bottom:none}tr.ev td{background:var(--bg2);font-weight:6
 <div class="ctrl"><span class="cl">Cost growth while waiting (% a year)</span><input type="range" id="sE" min="0" max="12" step="0.5" value="6"><span class="cv" id="vE2"></span></div>
 <div class="ctrl"><span class="cl">Share of added cost the public line covers</span><input type="range" id="sShare" min="0" max="100" step="10" value="80"><span class="cv" id="vShare"></span></div>
 <div class="ctrl"><span class="cl">Land comes from a public RFP</span><label style="font-size:.8rem"><input type="checkbox" id="sPub"> adds 12 months, an assumption</label></div>
-<div id="scenBars" style="margin:14px 0 6px"></div>
 <div class="tw"><table id="scenTbl"></table></div>
-<div class="cd am"><p><strong>How to read it.</strong> The "extra cost" column is what the wait adds compared with winning in round 1: cost growth on the part not yet bought, plus the cost of each source beyond three (about 1.7% of cost per source, Terner Center). Odds are placeholders. Replace them with your own pipeline's record. A project that never wins a round has to be restructured, which is not modeled here.</p></div>
+<p class="fine">"Extra" is the cost compared with winning in round 1: cost growth on the part not yet bought, plus about 1.7% of cost for each source beyond three (Terner Center, via Massachusetts). Odds are placeholders; replace them with your own pipeline's record. A project that never wins is not modeled.</p>
+</details>
 
-<h2>4. Is the affordable wait really longer?</h2>
-<p class="lead">Not necessarily on average. That is the interesting part.</p>
-<div class="verdicts">
-<div class="verdict"><div class="vt">What the research says</div><p>The Atlanta Fed finds little difference in development time between publicly and privately funded multifamily projects. Planning and permitting run 3–4 months longer than construction.</p></div>
-<div class="verdict am"><div class="vt">What it can't tell us</div><p>An average hides the spread. The summary I could read does not say how much individual projects vary, or what happens to the project that misses a round.</p></div>
-<div class="verdict bl"><div class="vt">Our hypothesis</div><p>The gap isn't the average wait. It's whether you know the answer before you commit. A date you can't predict is a cost nobody put in the pro forma.</p></div>
+<h2>4. What the research says about the wait</h2>
+<div class="pt"><b>The point</b>Each extra public funder adds about four months and about $20,000 a unit. And a study of finished projects can't see the ones that never finished.</div>
+<div class="ms">
+<div class="m am"><div class="ml">Added per extra public source</div><div class="mv">~4 months</div><div class="mn">to assemble the funding</div></div>
+<div class="m rd"><div class="ml">Added cost per extra source</div><div class="mv">$20,460</div><div class="mn">per unit</div></div>
+<div class="m bl"><div class="ml">Had to reapply at least once</div><div class="mv">27%</div><div class="mn">of awarded projects</div></div>
 </div>
-<p style="font-size:.7rem;color:var(--text3)">The hypothesis is ours and not a finding of the paper. Also reported: durations are longer in the Northeast and West, and in mixed-use and conversion projects.</p>
+<p class="fine">Terner Center, California tax credit projects: 699 awarded applications, 2020–2023. These are associations after controlling for location, building type and size, not proof of cause. The authors say fragmentation is not the only or largest cost driver.</p>
+<div class="verdicts">
+<div class="verdict"><div class="vt">What it shows</div><p>In affordable housing, the wait is partly a count: how many funders have to line up, and how many rounds it takes.</p></div>
+<div class="verdict am"><div class="vt">The catch: survivors only</div><p>Terner looks at projects that won an award. Studies of completed multifamily projects, like the Atlanta Fed's, find little difference between public and private funding, but they can't count projects that stalled or died.</p></div>
+<div class="verdict bl"><div class="vt">Our hypothesis</div><p>The real gap isn't the average wait. It's how many projects never finish, and whether you know the answer before you commit.</p></div>
+</div>
+<p class="fine">The hypothesis is ours, not a finding of either study. Nobody here has a count of affordable projects that never got built. That is a question for the room.</p>
 
 <h2>5. Who pays for the wait</h2>
-<p class="lead">The cost moves down the chain until someone can pass it on. Tap a card to see why, and what to ask.</p>
+<div class="pt"><b>The point</b>Same 50 units, same $30M. Market-rate sends a delay down a line, ending with renters. Affordable has nobody downstream, so everyone at the table has to say yes again, together.</div>
+<div class="ctrl"><span class="cl">Delay before the shovel (months)</span><input type="range" id="wD" min="0" max="24" step="1" value="12"><span class="cv" id="vwD"></span></div>
 <div class="chain">
 <div>
-<h3>Market-rate</h3>
-<button class="pay" aria-expanded="false"><span class="pn">1 · first to carry it</span><b>Seller or land holder</b><span class="pm">Holds the site longer, or sells at a discount.</span><span class="more"><span class="badge b-a">Reasoning</span> Option and extension fees pay part of it. Ask: who held your last site while approvals ran?</span></button>
-<div class="arr">↓ if it can't absorb it</div>
-<button class="pay" aria-expanded="false"><span class="pn">2</span><b>Lender</b><span class="pm">Interest reserve, extension fees, tighter terms.</span><span class="more"><span class="badge b-a">Reasoning</span> In tight credit the loan itself is the wait. Ask: when did a lender last decline to extend?</span></button>
+<h3>Market-rate · 50 units · $30M</h3>
+<div class="stg"><span class="pn">Before</span><b>Landholder or seller</b><span class="pm">Gets paid at closing. Carries the wait only if they hold an option or extend it.</span></div>
 <div class="arr">↓</div>
-<button class="pay" aria-expanded="false"><span class="pn">3</span><b>Equity partners</b><span class="pm">Returns erode; the deal stalls below their hurdle.</span><span class="more"><span class="badge b-a">Reasoning</span> Ask: at what return does equity walk from a delayed deal?</span></button>
-<div class="arr">↓</div>
-<button class="pay ok" aria-expanded="false"><span class="pn">4 · last to carry it</span><b>Renters</b><span class="pm">Priced into asking rents, if the market allows.</span><span class="more"><span class="badge b-a">Reasoning</span> Ask: how often does a delay actually get passed through?</span></button>
+<div class="stg"><span class="pn">During</span><b>Lender and equity partners</b><span class="pm">Both commit before the shovel. Delay costs them interest and return.</span></div>
+<div class="arr">↓ priced in, if the market allows</div>
+<div class="stg ok"><span class="pn">After</span><b>Renters</b><span class="pm">Pay the rent the market allows. The delay can be passed to them.</span></div>
+<div class="cd bl"><p id="mktOut"></p></div>
 </div>
 <div>
-<h3>Affordable</h3>
-<button class="pay" aria-expanded="false"><span class="pn">1 · first to carry it</span><b>Public funders</b><span class="pm">Added subsidy, or a longer queue.</span><span class="more"><span class="badge b-g">Sourced</span> Delay and cost growth must be covered by added subsidy or donations, or the project cannot proceed. Ask: does government see the carrying cost of its own queue?</span></button>
-<div class="arr">↓ if it can't absorb it</div>
-<button class="pay" aria-expanded="false"><span class="pn">2</span><b>Tax credit investors</b><span class="pm">Credits and returns arrive later.</span><span class="more"><span class="badge b-a">Reasoning</span> Who ultimately bears this is not stated in the sources I read. Ask: how do investors price delay today?</span></button>
-<div class="arr">↓</div>
-<button class="pay" aria-expanded="false"><span class="pn">3</span><b>Sponsor or nonprofit</b><span class="pm">Fee and donations absorb what subsidy does not.</span><span class="more"><span class="badge b-g">Sourced</span> Ask: how much fee gets deferred or given up on a typical delayed deal?</span></button>
-<div class="arr">↓</div>
-<button class="pay" aria-expanded="false"><span class="pn">4</span><b>Lenders</b><span class="pm">Often not carrying it: they lend once the stack is funded.</span><span class="more"><span class="badge b-a">Reasoning</span> Ask: when does a construction lender step in?</span></button>
-<div class="arr">↓</div>
-<button class="pay wall" aria-expanded="false"><span class="pn">The wall</span><b>Renters</b><span class="pm">Rents are capped, so delay cannot be passed through.</span><span class="more"><span class="badge b-g">Sourced</span> Maximum rents are set by federal rules tied to area median income. Ask: what would change if the cap could flex?</span></button>
+<h3>Affordable · 50 units · $30M</h3>
+<div class="seats">
+<div class="seat"><b>City or land owner</b><span>Wants units, and public land used well.</span></div>
+<div class="seat"><b>State agency</b><span>Wants the most units per subsidy dollar, within program rules.</span></div>
+<div class="seat"><b>Tax credit investor</b><span>Wants credits delivered on schedule, at a yield.</span></div>
+<div class="seat"><b>Lender</b><span>Wants repayment. Lends once the stack is whole.</span></div>
+<div class="seat"><b>Sponsor</b><span>Wants a building built, and one that operates.</span></div>
+<div class="seat lock"><b>Renters · locked</b><span>Rents are capped, so delay can't be passed to them.</span></div>
+</div>
+<p class="fine" style="margin-top:5px">Each seat has a different goal and a different calendar. All of them are needed at once. There is no seller discount to make it pencil.</p>
+<div class="cd rd"><p id="affOut"></p></div>
 </div>
 </div>
-<div class="cd rd"><p><strong>Hypothesis: where the cost goes when the wall holds.</strong> Back to the public line. A deal stalls when its last absorber is spent: market-rate when returns fall below what equity will accept, affordable when the subsidy line cannot grow. In a tight market, market-rate deals lose their cushion and start looking for public money too.</p></div>
+<p class="fine">Placeholders: $500K per unit not yet bought, cost growth 6% a year, delay capitalized at a 5% cap rate. The roles and goals in each seat are reasoning to test with the room, not findings. Maximum rents are set by federal rules tied to area median income (HUD).</p>
 
 <h2>6. If you had $10 million</h2>
-<p class="lead">Money can do three things about a wait: close the gap, make waiting cheaper, or make it shorter. Move the sliders. Defaults are placeholders.</p>
+<div class="pt"><b>The point</b>Money can close the gap, make waiting cheaper, or make the wait shorter. We want to know your split, and what you think is actually necessary.</div>
+<form id="splitForm" class="frm" autocomplete="off">
+<label class="fl">Your name<input type="text" id="fName" required maxlength="80" placeholder="First and last name"></label>
+<label class="fl">Organization or role <span class="opt">(optional)</span><input type="text" id="fRole" maxlength="120" placeholder="Where you sit in the work"></label>
+<div class="ctrl"><span class="cl">A · Close the gap</span><input type="range" id="sA" min="0" max="10" step="0.5" value="4"><span class="cv" id="vsA"></span></div>
+<div class="ctrl"><span class="cl">B · Make waiting cheaper</span><input type="range" id="sB" min="0" max="10" step="0.5" value="3"><span class="cv" id="vsB"></span></div>
+<div class="ctrl"><span class="cl">C · Make the wait shorter</span><span style="flex:1"></span><span class="cv" id="vsC"></span></div>
+<div class="splitbar"><i id="bA"></i><i id="bB"></i><i id="bC"></i></div>
+<p class="fine">A: subsidy that closes the gap. B: a fund that lowers the cost of carrying a project. C: owners paid to move projects between approval and funding.</p>
+<label class="fl">What is actually necessary?<textarea id="fNeed" rows="3" maxlength="800" placeholder="What would have to be true for your split to work?"></textarea></label>
+<label class="fl">What evidence would change your mind?<textarea id="fMind" rows="2" maxlength="600"></textarea></label>
+<div class="row"><button type="submit" id="fBtn" class="btn">Submit my split</button><span id="fMsg" class="fine" role="status"></span></div>
+<p class="fine">Names go to the organizers' sheet only. Results are shared back with names removed.</p>
+</form>
+<details class="play"><summary>See what each use of $10M buys</summary>
 <div class="ctrl"><span class="cl">Public subsidy needed per unit</span><input type="range" min="50000" max="400000" step="10000" value="200000" id="gap"><span class="cv" id="v-gap"></span></div>
 <div class="ctrl"><span class="cl">Total development cost per unit</span><input type="range" min="300000" max="900000" step="10000" value="650000" id="tdc"><span class="cv" id="v-tdc"></span></div>
 <div class="ctrl"><span class="cl">Units per project</span><input type="range" min="20" max="200" step="5" value="80" id="units"><span class="cv" id="v-units"></span></div>
@@ -227,8 +280,8 @@ tr:last-child td{border-bottom:none}tr.ev td{background:var(--bg2);font-weight:6
 </div>
 <div class="cd gn"><p id="be"></p></div>
 <div class="cd am"><p><strong>Read with care.</strong> Delay cost avoided is not the same as units delivered; it becomes units only if projects then need less subsidy. "Months saved" is the number that matters, and nothing here measures it. This is arithmetic for the argument, not a forecast.</p></div>
+</details>
 
-<div class="cd gn"><p><strong>Put your own split in the room's table.</strong> <a href="https://claude.ai/artifact/3ey4bPyHprQtDkFyFoNdfC">Submit your $10M split</a>: your name, how you would divide it, and what you think is actually necessary. Everyone's answers build one shared table.</p></div>
 
 <h2>Questions for the room</h2>
 <ol class="q">
@@ -243,7 +296,8 @@ tr:last-child td{border-bottom:none}tr.ev td{background:var(--bg2);font-weight:6
 <li><a href="https://www.mass.gov/info-details/home-for-everyone-construction-finance-explainer">Massachusetts, Home for Everyone construction finance explainer</a>: two or more cycles for 9% credits; each added source about 1.7% per unit; capitalized interest about 4% of cost; delays covered by added subsidy or donations; state-funded new construction above $650,000 per unit in 2024.</li>
 <li><a href="https://www.mass.gov/doc/phn-2025-14-nofa-winter-rental-round-2026/download">Massachusetts winter 2026 rental round notice</a>: notice, pre-application, full application and estimated award timing (about nine months).</li>
 <li><a href="https://perspectives.goulstonstorrs.com/insights/article/timeline-considerations-for-boston-s-new-re-review-process">Goulston &amp; Storrs, Boston large project review timeline</a>: median 10 months over a decade; tail of three to four years.</li>
-<li><a href="https://www.atlantafed.org/research-and-data/publications/policy-hub-papers/2024/06/18/04-how-long-does-it-take-to-build-multifamily-housing">Federal Reserve Bank of Atlanta, How long does it take to build multifamily housing?</a>: planning runs 3–4 months longer than construction; little difference between public and private funding.</li>
+<li><a href="https://ternercenter.berkeley.edu/research-and-policy/reducing-the-complexity-in-californias-affordable-housing-finance-system/">Terner Center, Reducing the complexity in California's affordable housing finance system</a> (April 2025): 699 awarded tax credit applications, 2020–2023; about four months and $20,460 per unit per added public source; 27% reapplied. Associations, not proven causes.</li>
+<li><a href="https://www.atlantafed.org/research-and-data/publications/policy-hub-papers/2024/06/18/04-how-long-does-it-take-to-build-multifamily-housing">Federal Reserve Bank of Atlanta, How long does it take to build multifamily housing?</a>: little difference in development time between public and private funding. Read it alongside its limits: it covers built projects.</li>
 <li><a href="https://www.huduser.gov/publications/pdf/what_happens_lihtc_v2.pdf">HUD, What Happens to Low-Income Housing Tax Credit Properties</a>: rent limits tied to area median income.</li>
 <li><a href="https://www.boston.gov/node/15870126">City of Boston, example city-land RFP</a>: shows the issue-to-response window only. Selection and conveyance timing are not published, so that step is left out of the chart.</li>
 </ol>
@@ -356,6 +410,61 @@ function scen(){
 }
 ['p1','p2','sSrc','sU','sE','sShare','sPub'].forEach(id=>document.getElementById(id).addEventListener('input',scen));
 scen();
+
+/* ---------- scenario headline tiles ---------- */
+(function(){
+  const old=scen;
+  window.scen=function(){old();
+    const last=document.querySelector('#scenTbl tr.ev');if(!last)return;
+    const td=[...last.children].map(x=>x.textContent);
+    document.getElementById('scenTiles').innerHTML=
+     '<div class="m am"><div class="ml">Expected shovel</div><div class="mv">'+td[2]+'</div><div class="mn">chance-weighted</div></div>'+
+     '<div class="m rd"><div class="ml">Expected extra cost</div><div class="mv">'+td[5]+'</div><div class="mn">whole project, vs. winning round 1</div></div>'+
+     '<div class="m bl"><div class="ml">Public line covers</div><div class="mv">'+td[6]+'</div><div class="mn">at the share you set</div></div>';
+  };
+  ['p1','p2','sSrc','sU','sE','sShare','sPub'].forEach(id=>document.getElementById(id).addEventListener('input',window.scen));
+  window.scen();
+})();
+
+/* ---------- who pays: one 50-unit project ---------- */
+function who(){
+  const m=+$('wD').value, units=50, unbought=500, e=.06, cap=.05;
+  const extraK=units*unbought*e*m/12, extra=extraK*1000;
+  const rent=extra*cap/units/12;
+  $('vwD').textContent=m+' mo';
+  const fmM=v=>'$'+(v/1e6).toFixed(2)+'M';
+  $('mktOut').innerHTML=m===0?'<strong>No delay.</strong> Nothing to pass on.':'<strong>A '+m+'-month delay adds '+fmM(extra)+'.</strong> Lender and equity carry it first. Passed to renters it is about <strong>$'+Math.round(rent)+' a month per unit</strong>, if the market allows. If not, it comes out of equity return.';
+  $('affOut').innerHTML=m===0?'<strong>No delay.</strong> Still five yeses to line up.':'<strong>A '+m+'-month delay adds '+fmM(extra)+'.</strong> Nobody is downstream. It needs a new yes from the city, the state, the investor and the lender, in one room, on one date. Rents are capped, so the extra becomes <strong>more subsidy</strong>, or the deal stalls.';
+}
+$('wD').addEventListener('input',who);who();
+
+/* ---------- $10M split form -> Google Form -> Sheet ---------- */
+// After the Google Form exists, fill action and entry ids here (see README).
+const FORM={action:'',entry:{name:'',role:'',a:'',b:'',c:'',need:'',mind:''}};
+function split(){
+  let a=+$('sA').value,b=+$('sB').value; if(a+b>10){b=10-a;$('sB').value=b}
+  const c=10-a-b;
+  $('vsA').textContent='$'+a.toFixed(1)+'M';$('vsB').textContent='$'+b.toFixed(1)+'M';$('vsC').textContent='$'+c.toFixed(1)+'M';
+  $('bA').style.width=a*10+'%';$('bB').style.width=b*10+'%';$('bC').style.width=c*10+'%';
+  return [a,b,c];
+}
+['sA','sB'].forEach(id=>$(id).addEventListener('input',split));split();
+$('splitForm').addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  const [a,b,c]=split(), btn=$('fBtn'), msg=$('fMsg');
+  const vals={name:$('fName').value.trim(),role:$('fRole').value.trim(),a,b,c,need:$('fNeed').value.trim(),mind:$('fMind').value.trim()};
+  if(!vals.name){msg.textContent='Add your name first.';return}
+  if(!FORM.action){
+    const txt=['Name: '+vals.name,'Role: '+vals.role,'A close the gap: $'+a+'M','B make waiting cheaper: $'+b+'M','C make the wait shorter: $'+c+'M','Necessary: '+vals.need,'Would change my mind: '+vals.mind].join('\n');
+    try{await navigator.clipboard.writeText(txt);msg.textContent='Sheet not connected yet. Your answers are copied.'}catch(e){msg.textContent='Sheet not connected yet.'}
+    return;
+  }
+  const body=new URLSearchParams();
+  for(const k in FORM.entry){ if(FORM.entry[k]) body.append(FORM.entry[k],vals[k]) }
+  btn.disabled=true;msg.textContent='Sending…';
+  try{await fetch(FORM.action,{method:'POST',mode:'no-cors',body});msg.textContent='Thank you. Your split is in.';$('splitForm').querySelectorAll('input,textarea').forEach(x=>x.disabled=true)}
+  catch(e){btn.disabled=false;msg.textContent='Could not send. Try again.'}
+});
 </script>
 </body>
 </html>
